@@ -19,8 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    # /catalog/
-    url(r'^catalog/',include('catalog.urls')),
+    # /
+    url(r'^',include('catalog.urls')),
 
     # /admin/
     url(r'^admin/', include(admin.site.urls)),
