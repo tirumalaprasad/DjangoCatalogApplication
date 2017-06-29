@@ -41,14 +41,16 @@ def category(request,category_id):
 
 
 def subcategory(request,subcategory_id):
-    print(subcategory_id)
     try:
+        dict = Subcategory.objects.filter(id=subcategory_id).values('category')
+        c_id = dict[0]
         subcategory_list = Product.objects.filter(subcategory=subcategory_id)
     except Product.DoesNotExist:
         raise Http404("No Products")
     template = loader.get_template('subcategory.html')
     context = {
         'subcategory_list': subcategory_list,
+        'c_id': c_id['category']
     }
     return HttpResponse(template.render(context, request))
 

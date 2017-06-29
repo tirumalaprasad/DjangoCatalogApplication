@@ -5,9 +5,10 @@
     <h2 class="sub-header">Products</h2>
         <ul class="list-group">
             {% for s in subcategory_list %}
-                <button type="button" class="list-group-item"><a href="{% url 'product' s.id %}">{{ s.name }}</a></button>
+                <li class="list-group-item"><a href="{% url 'product' s.id %}">{{ s.name }}</a></li>
             {% endfor %}
         </ul>
+    <a class="btn btn-default" href="{% url 'category' c_id %}" role="button">Back</a>
     </div>
 
 {% endblock %}
