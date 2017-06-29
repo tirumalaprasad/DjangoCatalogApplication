@@ -2,13 +2,14 @@
 
 {% block content %}
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+          <h1 class="page-header">Catalog</h1>
 
           <div class="row placeholders">
               {% for p in product_list %}
                     <div class="col-xs-6 col-sm-3 thumbnail">
                         <img src="/media/{{ p.image }}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                        <h4>{{ p.name }}</h4>
+                        <h4><a href="{% url 'product' p.id %}">{{ p.name }}</a></h4>
+
 
                         <div style="text-align:center"><p style="text-align: justify"><span class="text-muted">{{ p.info }}</span></p></div>
                         <a href="{% url 'category' p.subcategory.category.id %}" class="btn btn-primary" role="button">{{ p.subcategory.category }}</a>

@@ -66,32 +66,34 @@ def product(request, product_id):
 
 
 def add_category(request):
+    title = 'Add New Category'
     form_class = CategoryForm
     if request.method == 'POST':
         form = form_class(data=request.POST)
         if form.is_valid():
             form.save()
             return redirect('departments')
-    return render(request, 'add_new.html', {'form_class': form_class})
+    return render(request, 'add_new.html', {'form_class': form_class, 'title':title})
 
 
 def add_subcategory(request):
+    title = 'Add New SubCategory'
     form_class = SubcategoryForm
     if request.method == 'POST':
         form = form_class(data=request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
-    return render(request, 'add_new.html', {'form_class': form_class})
+    return render(request, 'add_new.html', {'form_class': form_class, 'title': title})
 
 
 def add_product(request):
-
+    title = 'Add New Product'
     if request.method == 'POST':
         form = UploadProductImage(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('index')
     form_class = UploadProductImage
-    return render(request, 'add_new.html', {'form_class': form_class})
+    return render(request, 'add_new.html', {'form_class': form_class, 'title': title})
 
