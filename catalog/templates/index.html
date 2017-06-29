@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="col-sm-9 col-sm-offset-3 col-md-5 col-md-offset-2 main">
-    <h2 class="sub-header">Catalog</h2>
-        <ul>
-            {% for p in product_list %}
-                <li>{{ p.name }}, <a href="{% url 'subcategory' p.subcategory.id %}">{{ p.subcategory }}</a>, <a href="{% url 'category' p.subcategory.category.id %}">{{ p.subcategory.category }}</a></li>
-                <img src="/media/{{ p.image }}" alt="{{ p.name }}" style="width:304px;height:228px;">
-            {% endfor %}
-        </ul>
-    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Dashboard</h1>
 
+          <div class="row placeholders">
+              {% for p in product_list %}
+                    <div class="col-xs-6 col-sm-3 thumbnail">
+                        <img src="/media/{{ p.image }}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                        <h4>{{ p.name }}</h4>
+
+                        <div style="text-align:center"><p style="text-align: justify"><span class="text-muted">{{ p.info }}</span></p></div>
+                        <a href="{% url 'category' p.subcategory.category.id %}" class="btn btn-primary" role="button">{{ p.subcategory.category }}</a>
+                        <a href="{% url 'subcategory' p.subcategory.id %}" class="btn btn-default" role="button">{{ p.subcategory }}</a>
+                        <span class="badge"><span class="glyphicon glyphicon-usd" aria-hidden="true">{{ p.price }}</span></span>
+                    </div>
+                {% endfor %}
+          </div>
+        </div>
 {% endblock %}
