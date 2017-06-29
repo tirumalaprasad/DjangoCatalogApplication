@@ -3,9 +3,10 @@
 {% block content %}
     <div class="col-sm-9 col-sm-offset-3 col-md-5 col-md-offset-2 main">
     <h2 class="sub-header">Categories</h2>
-        <ul>
+        <ul class="list-group">
             {% for c in category_list %}
-                <li><a href="{% url 'subcategory' c.id %}">{{ c.sub_title }}</a></li>
+                <button type="button" class="list-group-item"><a href="{% url 'subcategory' c.id %}">{{ c.sub_title }}</a>
+                <span class="badge">{{ c.product_set.count }}</span></button>
             {% endfor %}
         </ul>
     </div>
