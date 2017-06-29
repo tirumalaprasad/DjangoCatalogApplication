@@ -9,6 +9,7 @@
             <li>{{ product_details.price }}</li>
             <li>{{ product_details.created }}</li>
             <li>{{ product_details.updated }}</li>
+            <img src="/media/{{ product_details.image }}" alt="{{ p.name }}" style="width:304px;height:228px;">
             <li><a href="{% url 'category' product_details.subcategory.category.id %}">category</a></li>
             <li><a href="{% url 'subcategory' product_details.subcategory.id %}">Subcategory</a></li>
         </ul>

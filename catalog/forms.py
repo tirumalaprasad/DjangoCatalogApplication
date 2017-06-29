@@ -22,3 +22,9 @@ class ProductForm(ModelForm):
         model = Product
         exclude = ()
 ProductFormSet = inlineformset_factory(Subcategory,Product,form=ProductForm,extra=1)
+
+
+class UploadProductImage(ModelForm):
+    class Meta:
+        model = Product
+        exclude = ()

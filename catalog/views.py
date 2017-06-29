@@ -2,7 +2,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, reverse, redirect
 from django.template import loader
 from .models import Category, Subcategory, Product
-from .forms import CategoryForm, SubcategoryForm, ProductForm
+from .forms import CategoryForm, SubcategoryForm, ProductForm, UploadProductImage
 
 def index(request):
     try:
@@ -70,10 +70,7 @@ def add_category(request):
     if request.method == 'POST':
         form = form_class(data=request.POST)
         if form.is_valid():
-            obj = Category()
-            obj.title = form.cleaned_data['title']
-            obj.description = form.cleaned_data['description']
-            obj.save()
+            form.save()
             return redirect('departments')
     return render(request, 'add_new.html', {'form_class': form_class})
 
@@ -83,25 +80,18 @@ def add_subcategory(request):
     if request.method == 'POST':
         form = form_class(data=request.POST)
         if form.is_valid():
-            obj = Subcategory()
-            obj.category = form.cleaned_data['category']
-            obj.sub_title = form.cleaned_data['sub_title']
-            obj.sub_description = form.cleaned_data['sub_description']
-            obj.save()
+            form.save()
             return redirect('index')
     return render(request, 'add_new.html', {'form_class': form_class})
 
 
 def add_product(request):
-    form_class = ProductForm
+
     if request.method == 'POST':
-        form = form_class(data=request.POST)
+        form = UploadProductImage(request.POST, request.FILES)
         if form.is_valid():
-            obj = Product()
-            obj.subcategory = form.cleaned_data['subcategory']
-            obj.name = form.cleaned_data['name']
-            obj.info = form.cleaned_data['info']
-            obj.price = form.cleaned_data['price']
-            obj.save()
+            form.save()
             return redirect('index')
+    form_class = UploadProductImage
     return render(request, 'add_new.html', {'form_class': form_class})
+

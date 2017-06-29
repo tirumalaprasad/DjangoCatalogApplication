@@ -6,6 +6,7 @@
         <ul>
             {% for p in product_list %}
                 <li>{{ p.name }}, <a href="{% url 'subcategory' p.subcategory.id %}">{{ p.subcategory }}</a>, <a href="{% url 'category' p.subcategory.category.id %}">{{ p.subcategory.category }}</a></li>
+                <img src="/media/{{ p.image }}" alt="{{ p.name }}" style="width:304px;height:228px;">
             {% endfor %}
         </ul>
     </div>
