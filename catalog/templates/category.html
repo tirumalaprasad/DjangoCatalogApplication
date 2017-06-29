@@ -5,7 +5,7 @@
     <h2 class="sub-header">Subcategories</h2>
         <ul class="list-group">
             {% for c in category_list %}
-                <li class="list-group-item"><a href="{% url 'subcategory' c.id %}">{{ c.sub_title }}</a>
+                <li class="list-group-item"><a href="{% url 'subcategory' c.id %}">{{ c.name }}</a>
                 <span class="badge">{{ c.product_set.count }}</span></li>
             {% endfor %}
         </ul>

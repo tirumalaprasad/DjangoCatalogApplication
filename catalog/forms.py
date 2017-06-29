@@ -5,7 +5,7 @@ from django.forms import ModelForm, inlineformset_factory
 class CategoryForm(ModelForm):
     class Meta:
         model = Category
-        fields = ['title', 'description']
+        fields = ["name", 'description']
 
 
 class SubcategoryForm(ModelForm):
