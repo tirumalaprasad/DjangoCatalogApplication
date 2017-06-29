@@ -1,0 +1,20 @@
+branch-defaults:
+  master:
+    environment: mysite-dev
+ebbranch-defaults:
+  master:
+    environment: null
+    group_suffix: null
+global:
+  application_name: mysite
+  branch: null
+  default_ec2_keyname: new_roikoi
+  default_platform: Python 2.7
+  default_region: us-west-2
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  repository: null
+  sc: git
+  workspace_type: Application

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="col-sm-9 col-sm-offset-3 col-md-5 col-md-offset-2 main">
+    <h2 class="sub-header">Catalog</h2>
+        <ul>
+            {% for p in product_list %}
+                <li>{{ p.name }}, <a href="{% url 'subcategory' p.subcategory.id %}">{{ p.subcategory }}</a>, <a href="{% url 'category' p.subcategory.category.id %}">{{ p.subcategory.category }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}
